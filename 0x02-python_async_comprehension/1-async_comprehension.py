@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
-
-import asyncio
-import time
-
-async_comprehension = __import__('1-async_comprehension').async_comprehension
+'''Asynchronous Python
+'''
+from typing import List
 
 
-async def measure_runtime() -> float:
-    '''Executes async_comprehension 4 times and measures the
-    total execution time.
+async_generator = __import__('0-async_generator').async_generator
+
+
+async def async_comprehension() -> List[float]:
+    '''make a list of 10 num from imported generator
     '''
-    start_time = time.time()
-    await asyncio.gather(*(async_comprehension() for _ in range(4)))
-    return time.time() - start_time
+    return [num async for num in async_generator()]
